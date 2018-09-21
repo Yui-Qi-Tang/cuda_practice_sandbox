@@ -1,8 +1,15 @@
 #include "cuda_op.h"
 
 // Constructor
-CudaChecker::CudaChecker() {
-	// This is blank;
+CudaChecker::CudaChecker(const int devices) {
+	_usedDevices = devices;
+	_deviceCounts = deviceCounts();
+
+	if(_usedDevices > _deviceCounts) {
+        printf("These are not %d devices(Max devices: %d)", _usedDevices, _deviceCounts);
+	}
+    // printf("Initial CUDA ")
+	
 }
 
 // Destructor
@@ -54,4 +61,21 @@ int CudaChecker::initCuda(const int max_device_count_to_use){
 	cudaSetDevice(0);
     printf("cudaSetDevice %d/%d\n", 0, deviceCount);
 	return deviceCount;
+}
+
+
+/*Get device counts on your platform*/
+int CudaChecker::deviceCounts() {
+	int deviceCounts = 0;
+	int cudaErrCode = -1; // not set
+	cudaErrCode = cudaGetDeviceCount(&deviceCounts);
+	if (cudaErrCode != cudaSuccess) {
+		fprintf(stderr, "There is no device. and cuda error code is: %d\n", cudaErrCode);
+        exit(-1);
+	}	
+	return deviceCounts;
+}
+
+int CudaChecker::getMaxDeviceCounts() {
+	return _deviceCounts;
 }
