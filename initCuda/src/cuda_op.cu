@@ -150,6 +150,9 @@ void CudaChecker::dumpDevicesProperty() {
 		
 		for (int i = 0; i<3; i++) {
 		    printf("maxThreadsDim[%d]: %d\n", i, devPtr -> maxThreadsDim[i] );
+		}
+
+		for (int i = 0; i<3; i++) {
 		    printf("maxGridSize[%d]: %d\n", i, devPtr -> maxGridSize[i]);
 		}
 		
