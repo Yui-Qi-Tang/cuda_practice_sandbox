@@ -152,12 +152,12 @@ void CudaChecker::dumpDevicesProperty() {
 		printf("pciDeviceID: %d\n", (_devProp + i) -> pciDeviceID);
 		printf("tccDriver: %d\n", (_devProp + i) -> tccDriver);
 		
-		for (int i = 0; i<3; i++) {
-		    printf("maxThreadsDim[%d]: %d\n", i, (_devProp + i) -> maxThreadsDim[i] );
+		for (int j = 0; j<3; j++) {
+		    printf("maxThreadsDim[%d]: %d\n", j, (_devProp + i) -> maxThreadsDim[j] );
 		}
 
-		for (int i = 0; i<3; i++) {
-		    printf("maxGridSize[%d]: %d\n", i, (_devProp + i) -> maxGridSize[i]);
+		for (int j = 0; j<3; j++) {
+		    printf("maxGridSize[%d]: %d\n", j, (_devProp + i) -> maxGridSize[j]);
 		}
 		
 		printf("totalGlobalMem: %lu\n", (_devProp + i) -> totalGlobalMem);
