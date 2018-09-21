@@ -94,11 +94,11 @@ void CudaChecker::getDeviceProps() {
 }
 
 void CudaChecker::dumpDevicesProperty() {
-	int major = 0;
 	cudaDeviceProp *devPtr;
 	for(int i = 0; i < _usedDevices; i++) {
 		devPtr = _devProp + i;
-		major = devPtr -> major;
-		printf("major of device %d is %d\n", i, major);
+		printf("==>Property of Device no.%d\n",i);
+		printf("major: %d\n", devPtr -> major);
+		printf("name: %s\n", devPtr -> name);
 	}
 }
