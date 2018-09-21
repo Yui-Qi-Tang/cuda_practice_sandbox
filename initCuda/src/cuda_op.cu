@@ -27,8 +27,8 @@ CudaChecker::~CudaChecker() {
 		free((_devProp+i));
 	}
 
-	delete &_usedDevices;
-	delete &_deviceCounts;
+	// delete &_usedDevices;
+	// delete &_deviceCounts;
 }
 
 // initilize CUDA and get device count
