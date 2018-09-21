@@ -23,7 +23,8 @@ CudaChecker::CudaChecker(const int devices) {
 
 // Destructor
 CudaChecker::~CudaChecker() {
-	for(int i=0; i<_usedDevices;i++) {
+	for(int i=_usedDevices - 1; i >= 0; i++) {
+		printf("relase devPtr[%d]", i);
 		free((_devProp+i));
 	}
 
