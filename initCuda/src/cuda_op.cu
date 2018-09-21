@@ -131,42 +131,40 @@ void CudaChecker::dumpDevicesProperty() {
           int pciDeviceID;
           int tccDriver;
 	*/
-	cudaDeviceProp *devPtr;
 	for(int i = 0; i < _usedDevices; i++) {
-		devPtr = _devProp + i;
 		printf("==>Property of Device no.%d\n", i);
-		printf("name: %s\n", devPtr -> name);
-		printf("major: %d\n", devPtr -> major);
-		printf("regsPerBlock: %d\n", devPtr -> regsPerBlock);
-		printf("warpSize: %d\n", devPtr -> warpSize);
-		printf("maxThreadsPerBlock: %d\n", devPtr -> maxThreadsPerBlock);
-		printf("minor: %d\n", devPtr -> minor);
-		printf("clockRate: %d\n", devPtr -> clockRate);
-		printf("deviceOverlap: %d\n", devPtr -> deviceOverlap);
-		printf("multiProcessorCount: %d\n", devPtr -> multiProcessorCount);
-		printf("kernelExecTimeoutEnabled: %d\n", devPtr -> kernelExecTimeoutEnabled);
-		printf("integrated: %d\n", devPtr -> integrated);
-		printf("canMapHostMemory: %d\n", devPtr -> canMapHostMemory);
-		printf("computeMode: %d\n", devPtr -> computeMode);
-		printf("concurrentKernels: %d\n", devPtr -> concurrentKernels);
-		printf("ECCEnabled: %d\n", devPtr -> ECCEnabled);
-		printf("pciBusID: %d\n", devPtr -> pciBusID);
-		printf("pciDeviceID: %d\n", devPtr -> pciDeviceID);
-		printf("tccDriver: %d\n", devPtr -> tccDriver);
+		printf("name: %s\n", (_devProp + i) -> name);
+		printf("major: %d\n", (_devProp + i) -> major);
+		printf("regsPerBlock: %d\n", (_devProp + i) -> regsPerBlock);
+		printf("warpSize: %d\n", (_devProp + i) -> warpSize);
+		printf("maxThreadsPerBlock: %d\n", (_devProp + i) -> maxThreadsPerBlock);
+		printf("minor: %d\n", (_devProp + i) -> minor);
+		printf("clockRate: %d\n", (_devProp + i) -> clockRate);
+		printf("deviceOverlap: %d\n", (_devProp + i) -> deviceOverlap);
+		printf("multiProcessorCount: %d\n", (_devProp + i) -> multiProcessorCount);
+		printf("kernelExecTimeoutEnabled: %d\n", (_devProp + i) -> kernelExecTimeoutEnabled);
+		printf("integrated: %d\n", (_devProp + i) -> integrated);
+		printf("canMapHostMemory: %d\n", (_devProp + i) -> canMapHostMemory);
+		printf("computeMode: %d\n", (_devProp + i) -> computeMode);
+		printf("concurrentKernels: %d\n", (_devProp + i) -> concurrentKernels);
+		printf("ECCEnabled: %d\n", (_devProp + i) -> ECCEnabled);
+		printf("pciBusID: %d\n", (_devProp + i) -> pciBusID);
+		printf("pciDeviceID: %d\n", (_devProp + i) -> pciDeviceID);
+		printf("tccDriver: %d\n", (_devProp + i) -> tccDriver);
 		
 		for (int i = 0; i<3; i++) {
-		    printf("maxThreadsDim[%d]: %d\n", i, devPtr -> maxThreadsDim[i] );
+		    printf("maxThreadsDim[%d]: %d\n", i, (_devProp + i) -> maxThreadsDim[i] );
 		}
 
 		for (int i = 0; i<3; i++) {
-		    printf("maxGridSize[%d]: %d\n", i, devPtr -> maxGridSize[i]);
+		    printf("maxGridSize[%d]: %d\n", i, (_devProp + i) -> maxGridSize[i]);
 		}
 		
-		printf("totalGlobalMem: %lu\n", devPtr -> totalGlobalMem);
-        printf("sharedMemPerBlock: %lu\n", devPtr -> sharedMemPerBlock);
-        printf("memPitch: %lu\n", devPtr -> memPitch);
-        printf("totalConstMem: %lu\n", devPtr -> totalConstMem);
-		printf("textureAlignment: %lu\n", devPtr -> textureAlignment);
+		printf("totalGlobalMem: %lu\n", (_devProp + i) -> totalGlobalMem);
+        printf("sharedMemPerBlock: %lu\n", (_devProp + i) -> sharedMemPerBlock);
+        printf("memPitch: %lu\n", (_devProp + i) -> memPitch);
+        printf("totalConstMem: %lu\n", (_devProp + i) -> totalConstMem);
+		printf("textureAlignment: %lu\n", (_devProp + i) -> textureAlignment);
 	} // for
 }
 
