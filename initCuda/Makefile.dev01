@@ -59,4 +59,4 @@ pre_check:
 	@if ! test -f $(BLD); then mkdir -p $(BLD); fi
 
 clean:
-	rm -f $(BIN_OBJS) $(BLD)/* core
+	rm -f $(CUBIN_OBJS) $(BIN_OBJS) $(BLD)/* core
