@@ -23,7 +23,12 @@ CudaChecker::CudaChecker(const int devices) {
 
 // Destructor
 CudaChecker::~CudaChecker() {
-	// This is blank;
+	for(int i=0; i<_usedDevices;i++) {
+		free((_devProp+i));
+	}
+
+	delete &_usedDevices;
+	delete &_deviceCounts;
 }
 
 // initilize CUDA and get device count
@@ -191,4 +196,6 @@ void CudaChecker::setDevice(int deviceNum) {
 		printf("Fatal Error: set cuda device execution failed, status: %d\n", status);
 		exit(-1);	
 	}
+
+	printf("Set cuda device success!!\n");
 }
