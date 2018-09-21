@@ -23,13 +23,11 @@ CudaChecker::CudaChecker(const int devices) {
 
 // Destructor
 CudaChecker::~CudaChecker() {
+	// free pointer since tail to head, avoid pointer broken head
 	for(int i=_usedDevices - 1; i >= 0; i--) {
-		printf("relase devPtr[%d]\n", i);
+		// printf("relase devPtr[%d]\n", i); // print which pointer is relased
 		free((_devProp+i));
 	}
-
-	// delete &_usedDevices;
-	// delete &_deviceCounts;
 }
 
 // initilize CUDA and get device count
