@@ -9,6 +9,12 @@ CudaChecker::CudaChecker(const int devices) {
         printf("These are not %d devices(Max devices: %d)", _usedDevices, _deviceCounts);
 	}
 	getDeviceProps();
+	if(allDevicesSupCuda()) {
+		printf("Yes all devices support cuda!!\n");
+	}
+	else{
+		printf("No some deives does not support cuda\n");
+	}
     // printf("Initial CUDA ")
 	
 }
@@ -161,5 +167,15 @@ void CudaChecker::dumpDevicesProperty() {
         printf("memPitch: %lu\n", devPtr -> memPitch);
         printf("totalConstMem: %lu\n", devPtr -> totalConstMem);
 		printf("textureAlignment: %lu\n", devPtr -> textureAlignment);
+	} // for
+}
+
+bool CudaChecker::allDevicesSupCuda() {
+	// use major of device property to check
+	for(int i = 0; i < _usedDevices; i++) {
+	    if( (_devProp + i) -> major < 2 ) {
+			return false;
+		}
 	}
+	return true;
 }

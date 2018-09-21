@@ -14,6 +14,7 @@ class CudaChecker {
 	private:
 	    int deviceCounts();
 		void getDeviceProps();
+		bool allDevicesSupCuda();
 
 	private:
 	    int _usedDevices;
