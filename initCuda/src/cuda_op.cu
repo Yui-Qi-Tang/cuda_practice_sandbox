@@ -129,8 +129,8 @@ void CudaChecker::dumpDevicesProperty() {
 	for(int i = 0; i < _usedDevices; i++) {
 		devPtr = _devProp + i;
 		printf("==>Property of Device no.%d\n", i);
-		printf("major: %d\n", devPtr -> major);
 		printf("name: %s\n", devPtr -> name);
+		printf("major: %d\n", devPtr -> major);
 		printf("regsPerBlock: %d\n", devPtr -> regsPerBlock);
 		printf("warpSize: %d\n", devPtr -> warpSize);
 		printf("maxThreadsPerBlock: %d\n", devPtr -> maxThreadsPerBlock);
