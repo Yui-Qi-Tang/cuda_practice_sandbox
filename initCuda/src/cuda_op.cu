@@ -8,6 +8,7 @@ CudaChecker::CudaChecker(const int devices) {
 	if(_usedDevices > _deviceCounts) {
         printf("These are not %d devices(Max devices: %d)", _usedDevices, _deviceCounts);
 	}
+	getDeviceProps();
     // printf("Initial CUDA ")
 	
 }
@@ -78,4 +79,26 @@ int CudaChecker::deviceCounts() {
 
 int CudaChecker::getMaxDeviceCounts() {
 	return _deviceCounts;
+}
+
+void CudaChecker::getDeviceProps() {
+	_devProp = (cudaDeviceProp *)malloc(sizeof(cudaDeviceProp) * _usedDevices);
+	// cuda device 由 0 開始計算，第一個裝置在0的位置
+	for(int i = 0; i < _usedDevices; i++) {
+        cudaError_t status = cudaGetDeviceProperties((_devProp+i), i);
+		if(status != cudaSuccess) {
+            printf("Fatal Error: Get device properites failed!\n");
+			exit(-1);
+		} // fi
+	} // for
+}
+
+void CudaChecker::dumpDevicesProperty() {
+	int major = 0;
+	cudaDeviceProp *devPtr;
+	for(int i = 0; i < _usedDevices; i++) {
+		devPtr = _devProp + i;
+		major = devPtr -> major;
+		printf("major of device %d is %d\n", i, major);
+	}
 }

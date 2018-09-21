@@ -2,7 +2,8 @@
 
 int main(int argc, char* argv[]) {
     CudaChecker checker(1);
-    printf("Numbers of device: %d", checker.getMaxDeviceCounts());
+    // printf("Max numbers of device: %d\n", checker.getMaxDeviceCounts());
     //checker.initCuda(1);
+    checker.dumpDevicesProperty();
     return 0;    
 }

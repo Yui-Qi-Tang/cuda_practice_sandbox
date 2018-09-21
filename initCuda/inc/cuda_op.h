@@ -9,10 +9,14 @@ class CudaChecker {
         int initCuda(const int max_device_count_to_use);
 		int getMaxDeviceCounts();
 
+		void dumpDevicesProperty();
+
 	private:
 	    int deviceCounts();
+		void getDeviceProps();
 
 	private:
 	    int _usedDevices;
 		int _deviceCounts;
+		cudaDeviceProp *_devProp;
 };
