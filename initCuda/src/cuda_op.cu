@@ -6,17 +6,19 @@ CudaChecker::CudaChecker(const int devices) {
 	_deviceCounts = deviceCounts();
 
 	if(_usedDevices > _deviceCounts) {
-        printf("These are not %d devices(Max devices: %d)", _usedDevices, _deviceCounts);
+        printf("These are not %d devices(Max devices: %d)\n", _usedDevices, _deviceCounts);
 	}
 	getDeviceProps();
-	if(allDevicesSupCuda()) {
-		printf("Yes all devices support cuda!!\n");
-	}
-	else{
+	if(!allDevicesSupCuda()) {
 		printf("No some deives does not support cuda\n");
+		exit(-1);
 	}
-    // printf("Initial CUDA ")
-	
+	printf("Finished check CUDA, There %d device exists\n", _deviceCounts);
+	printf("The device number is: ");
+	for(int i=0; i < _deviceCounts; i++) {
+		printf("%d", i);
+	}
+	printf("\n");
 }
 
 // Destructor
@@ -176,4 +178,17 @@ bool CudaChecker::allDevicesSupCuda() {
 		}
 	}
 	return true;
+}
+
+void CudaChecker::setDevice(int deviceNum) {
+	if( deviceNum > (_usedDevices -1) ) {
+		printf("Fatal Error: specify an error device number: %d(Max:%d)", deviceNum, (_usedDevices -1));
+		exit(-1);
+	}
+
+	cudaError_t status = cudaSetDevice(deviceNum);
+	if(status != cudaSuccess) {
+		printf("Fatal Error: set cuda device execution failed, status: %d\n", status);
+		exit(-1);	
+	}
 }
