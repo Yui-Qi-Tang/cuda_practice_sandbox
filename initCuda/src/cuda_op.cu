@@ -12,10 +12,11 @@ CudaChecker::~CudaChecker() {
 
 // initilize CUDA and get device count
 int CudaChecker::initCuda(const int max_device_count_to_use){
-	int deviceCount;
-	cudaGetDeviceCount(&deviceCount);
+	int deviceCount=0;
+	int cuda_err_code = -1; // not set
+	cuda_err_code = cudaGetDeviceCount(&deviceCount);
 	if(deviceCount==0){
-		fprintf(stderr, "There is no device.\n");
+		fprintf(stderr, "There is no device. and cuda_code is: %d\n", cuda_err_code);
 		return 0;
 	}
 	else {

@@ -17,7 +17,7 @@ LIB=lib
 INCLUDES=-I. -I$(INC)
 
 CXX=g++
-CXXFLAGS= -std=c++11 -lpthread -pthread
+CXXFLAGS= -O2 -std=c++11 -lpthread -pthread
 
 # g++
 SOURCES=$(wildcard $(SRC)/*.cpp)
@@ -36,8 +36,8 @@ CUBIN_OBJS=$(addprefix $(OBJ)/,$(CUOBJS))
 
 # rule to build g++ .o
 $(OBJ)/%.o: $(SRC)/%.cpp
-	#$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
-	$(NVCC) $(NVCCFLAG) $(INCLUDES) -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+	# $(NVCC) $(NVCCFLAG) $(INCLUDES) -c $< -o $@
 
 # rule to build nvcc .o
 $(OBJ)/%.o: $(SRC)/%.cu
