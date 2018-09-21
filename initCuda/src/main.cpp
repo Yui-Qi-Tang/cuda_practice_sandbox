@@ -1,4 +1,4 @@
-#include "cuda_op.h"
+#include "CudaChecker.h"
 
 int main(int argc, char* argv[]) {
     CudaChecker checker(1);

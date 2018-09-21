@@ -1,4 +1,4 @@
-#include "cuda_op.h"
+#include "CudaChecker.h"
 
 // Constructor
 CudaChecker::CudaChecker(const int devices) {
